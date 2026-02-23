@@ -1,0 +1,91 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 600" fill="none">
+  <!-- Background gradient -->
+  <defs>
+    <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#FFDFEF" stop-opacity="0.5"/>
+      <stop offset="100%" stop-color="#EABDE6" stop-opacity="0.3"/>
+    </linearGradient>
+    <linearGradient id="purpleGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#AA60C8"/>
+      <stop offset="100%" stop-color="#D69ADE"/>
+    </linearGradient>
+    <linearGradient id="pinkGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#D69ADE"/>
+      <stop offset="100%" stop-color="#EABDE6"/>
+    </linearGradient>
+  </defs>
+  
+  <!-- Background -->
+  <rect width="800" height="600" fill="url(#bgGrad)" rx="20"/>
+  
+  <!-- Decorative circles -->
+  <circle cx="100" cy="100" r="80" fill="#EABDE6" opacity="0.4"/>
+  <circle cx="700" cy="500" r="120" fill="#FFDFEF" opacity="0.6"/>
+  <circle cx="650" cy="150" r="60" fill="#D69ADE" opacity="0.3"/>
+  
+  <!-- Central heart with supportive hands -->
+  <g transform="translate(400, 280)">
+    <!-- Outer glow -->
+    <circle cx="0" cy="0" r="140" fill="#FFDFEF" opacity="0.5"/>
+    <circle cx="0" cy="0" r="110" fill="#EABDE6" opacity="0.4"/>
+    
+    <!-- Heart shape -->
+    <path d="M0 60 C-60 10 -100 -30 -100 -70 C-100 -110 -60 -130 -30 -110 C-10 -95 0 -70 0 -70 C0 -70 10 -95 30 -110 C60 -130 100 -110 100 -70 C100 -30 60 10 0 60Z" 
+          fill="url(#purpleGrad)"/>
+    
+    <!-- Inner heart highlight -->
+    <path d="M0 45 C-45 5 -75 -25 -75 -55 C-75 -85 -45 -100 -25 -85 C-10 -75 0 -55 0 -55 C0 -55 10 -75 25 -85 C45 -100 75 -85 75 -55 C75 -25 45 5 0 45Z" 
+          fill="#FFDFEF" opacity="0.3"/>
+  </g>
+  
+  <!-- Supporting hands around heart -->
+  <g transform="translate(400, 280)">
+    <!-- Left hand -->
+    <ellipse cx="-160" cy="20" rx="45" ry="35" fill="url(#pinkGrad)" transform="rotate(-20 -160 20)"/>
+    <ellipse cx="-160" cy="20" rx="35" ry="25" fill="#FFDFEF" opacity="0.5" transform="rotate(-20 -160 20)"/>
+    
+    <!-- Right hand -->
+    <ellipse cx="160" cy="20" rx="45" ry="35" fill="url(#pinkGrad)" transform="rotate(20 160 20)"/>
+    <ellipse cx="160" cy="20" rx="35" ry="25" fill="#FFDFEF" opacity="0.5" transform="rotate(20 160 20)"/>
+    
+    <!-- Bottom hands -->
+    <ellipse cx="-60" cy="100" rx="40" ry="30" fill="url(#pinkGrad)" transform="rotate(-10 -60 100)"/>
+    <ellipse cx="60" cy="100" rx="40" ry="30" fill="url(#pinkGrad)" transform="rotate(10 60 100)"/>
+  </g>
+  
+  <!-- People silhouettes -->
+  <g transform="translate(0, 450)">
+    <!-- Person 1 -->
+    <circle cx="150" cy="50" r="35" fill="url(#purpleGrad)" opacity="0.8"/>
+    <ellipse cx="150" cy="130" rx="50" ry="70" fill="url(#purpleGrad)" opacity="0.8"/>
+    
+    <!-- Person 2 -->
+    <circle cx="400" cy="30" r="40" fill="#AA60C8" opacity="0.9"/>
+    <ellipse cx="400" cy="120" rx="55" ry="80" fill="#AA60C8" opacity="0.9"/>
+    
+    <!-- Person 3 -->
+    <circle cx="650" cy="50" r="35" fill="url(#purpleGrad)" opacity="0.8"/>
+    <ellipse cx="650" cy="130" rx="50" ry="70" fill="url(#purpleGrad)" opacity="0.8"/>
+  </g>
+  
+  <!-- Connection lines between people -->
+  <g stroke="#D69ADE" stroke-width="3" stroke-linecap="round" opacity="0.6">
+    <path d="M200 500 Q300 450 350 480" fill="none"/>
+    <path d="M450 480 Q500 450 600 500" fill="none"/>
+  </g>
+  
+  <!-- Floating elements -->
+  <g fill="#EABDE6" opacity="0.5">
+    <circle cx="80" cy="250" r="15"/>
+    <circle cx="720" cy="300" r="20"/>
+    <circle cx="200" cy="180" r="10"/>
+    <circle cx="600" cy="200" r="12"/>
+  </g>
+  
+  <!-- Sparkle elements -->
+  <g fill="#AA60C8">
+    <path d="M120 150 L125 135 L130 150 L145 155 L130 160 L125 175 L120 160 L105 155 Z" opacity="0.6"/>
+    <path d="M680 200 L685 185 L690 200 L705 205 L690 210 L685 225 L680 210 L665 205 Z" opacity="0.6"/>
+    <path d="M250 100 L253 90 L256 100 L266 103 L256 106 L253 116 L250 106 L240 103 Z" opacity="0.4"/>
+  </g>
+</svg>

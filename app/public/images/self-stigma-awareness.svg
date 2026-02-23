@@ -1,0 +1,85 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 500" fill="none">
+  <defs>
+    <linearGradient id="purpleGrad2" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#AA60C8"/>
+      <stop offset="100%" stop-color="#D69ADE"/>
+    </linearGradient>
+    <linearGradient id="pinkGrad2" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#D69ADE"/>
+      <stop offset="100%" stop-color="#EABDE6"/>
+    </linearGradient>
+  </defs>
+  
+  <!-- Background -->
+  <rect width="600" height="500" fill="#FDF5FA" rx="20"/>
+  
+  <!-- Central figure silhouette -->
+  <g transform="translate(300, 250)">
+    <!-- Head -->
+    <circle cx="0" cy="-80" r="60" fill="url(#purpleGrad2)" opacity="0.9"/>
+    
+    <!-- Body -->
+    <ellipse cx="0" cy="80" rx="90" ry="120" fill="url(#purpleGrad2)" opacity="0.9"/>
+    
+    <!-- Inner self - smaller figure representing internal dialogue -->
+    <g transform="translate(0, -20)">
+      <circle cx="0" cy="0" r="35" fill="#FFDFEF" opacity="0.8"/>
+      <ellipse cx="0" cy="50" rx="50" ry="65" fill="#FFDFEF" opacity="0.8"/>
+      
+      <!-- Thought cloud around inner self -->
+      <ellipse cx="-70" cy="-30" rx="25" ry="20" fill="#EABDE6" opacity="0.5"/>
+      <ellipse cx="70" cy="-20" rx="20" ry="15" fill="#EABDE6" opacity="0.5"/>
+      <ellipse cx="-50" cy="60" rx="20" ry="15" fill="#EABDE6" opacity="0.5"/>
+      <ellipse cx="60" cy="70" rx="25" ry="18" fill="#EABDE6" opacity="0.5"/>
+    </g>
+  </g>
+  
+  <!-- Breaking chains / stigma barriers -->
+  <g transform="translate(300, 250)">
+    <!-- Chain links breaking -->
+    <g stroke="#AA60C8" stroke-width="8" fill="none" opacity="0.4">
+      <!-- Top chain -->
+      <path d="M-120 -150 Q-100 -170 -80 -150" stroke-dasharray="10,5"/>
+      <path d="M-60 -150 Q-40 -170 -20 -150" stroke-dasharray="10,5"/>
+      <path d="M20 -150 Q40 -170 60 -150" stroke-dasharray="10,5"/>
+      <path d="M80 -150 Q100 -170 120 -150" stroke-dasharray="10,5"/>
+      
+      <!-- Bottom chain -->
+      <path d="M-120 280 Q-100 300 -80 280" stroke-dasharray="10,5"/>
+      <path d="M-60 280 Q-40 300 -20 280" stroke-dasharray="10,5"/>
+      <path d="M20 280 Q40 300 60 280" stroke-dasharray="10,5"/>
+      <path d="M80 280 Q100 300 120 280" stroke-dasharray="10,5"/>
+    </g>
+    
+    <!-- Breaking effect -->
+    <g fill="#D69ADE" opacity="0.3">
+      <polygon points="-100,-160 -90,-180 -80,-160"/>
+      <polygon points="100,-160 110,-180 120,-160"/>
+      <polygon points="-100,290 -90,310 -80,290"/>
+      <polygon points="100,290 110,310 120,290"/>
+    </g>
+  </g>
+  
+  <!-- Awareness rays -->
+  <g transform="translate(300, 170)" opacity="0.3">
+    <line x1="0" y1="-100" x2="0" y2="-140" stroke="url(#purpleGrad2)" stroke-width="4" stroke-linecap="round"/>
+    <line x1="70" y1="-70" x2="100" y2="-100" stroke="url(#purpleGrad2)" stroke-width="4" stroke-linecap="round"/>
+    <line x1="100" y1="0" x2="140" y2="0" stroke="url(#purpleGrad2)" stroke-width="4" stroke-linecap="round"/>
+    <line x1="70" y1="70" x2="100" y2="100" stroke="url(#purpleGrad2)" stroke-width="4" stroke-linecap="round"/>
+    <line x1="-70" y1="-70" x2="-100" y2="-100" stroke="url(#purpleGrad2)" stroke-width="4" stroke-linecap="round"/>
+    <line x1="-100" y1="0" x2="-140" y2="0" stroke="url(#purpleGrad2)" stroke-width="4" stroke-linecap="round"/>
+    <line x1="-70" y1="70" x2="-100" y2="100" stroke="url(#purpleGrad2)" stroke-width="4" stroke-linecap="round"/>
+  </g>
+  
+  <!-- SSDS Scale visualization -->
+  <g transform="translate(50, 420)">
+    <rect x="0" y="0" width="500" height="40" rx="20" fill="#EABDE6" opacity="0.4"/>
+    <rect x="0" y="0" width="350" height="40" rx="20" fill="url(#pinkGrad2)"/>
+    <circle cx="350" cy="20" r="25" fill="#AA60C8"/>
+    <text x="350" y="26" text-anchor="middle" fill="white" font-size="14" font-weight="bold">SSDS</text>
+  </g>
+  
+  <!-- Labels -->
+  <text x="50" y="475" fill="#6B4E7C" font-size="12">Pre-test</text>
+  <text x="500" y="475" text-anchor="end" fill="#6B4E7C" font-size="12">Post-test</text>
+</svg>
