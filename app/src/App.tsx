@@ -30,6 +30,8 @@ import { Textarea } from '@/components/ui/textarea';
 import { Label } from '@/components/ui/label';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
 import { Checkbox } from '@/components/ui/checkbox';
+import { cn } from '@/lib/utils';
+import { MOBILITIES } from '@/lib/mobilities';
 
 // Home Page
 export function HomePage() {
@@ -646,69 +648,42 @@ export function ActivitiesPage() {
         </div>
       </section>
 
-      {/* Timeline */}
+      {/* Timeline / Mobilities roadmap */}
       <section className="section gradient-subtle">
         <div className="section-container">
           <div className="text-center mb-12">
-            <h2 className="heading-lg mb-4">Project Timeline</h2>
-            <p className="body-lg max-w-2xl mx-auto">Key milestones and activities throughout the 24-month project duration.</p>
+            <h2 className="heading-lg mb-4">Project Timeline & Mobilities</h2>
+            <p className="body-lg max-w-2xl mx-auto">Key milestones and mobilities throughout the 24-month project. Click a mobility for more details and media.</p>
           </div>
           <div className="max-w-4xl mx-auto">
             <div className="space-y-6">
-              <div className="flex gap-4">
-                <div className="flex flex-col items-center">
-                  <div className="w-4 h-4 rounded-full bg-tsst-primary-dark" />
-                  <div className="w-0.5 flex-1 bg-tsst-border mt-2" />
-                </div>
-                <div className="pb-6">
-                  <span className="badge mb-2">October 2024</span>
-                  <h4 className="font-semibold text-tsst-text mb-1">Online Kick-off Meeting</h4>
-                  <p className="body-sm">Project launch and initial planning</p>
-                </div>
-              </div>
-              <div className="flex gap-4">
-                <div className="flex flex-col items-center">
-                  <div className="w-4 h-4 rounded-full bg-tsst-primary" />
-                  <div className="w-0.5 flex-1 bg-tsst-border mt-2" />
-                </div>
-                <div className="pb-6">
-                  <span className="badge mb-2">January 2025</span>
-                  <h4 className="font-semibold text-tsst-text mb-1">Kick-off in Curaçao (ASEAC)</h4>
-                  <p className="body-sm">3 days of activities facilitating active participation</p>
-                </div>
-              </div>
-              <div className="flex gap-4">
-                <div className="flex flex-col items-center">
-                  <div className="w-4 h-4 rounded-full bg-tsst-primary" />
-                  <div className="w-0.5 flex-1 bg-tsst-border mt-2" />
-                </div>
-                <div className="pb-6">
-                  <span className="badge mb-2">June 2025</span>
-                  <h4 className="font-semibold text-tsst-text mb-1">1st LTTA in North Macedonia (Xanadu Art)</h4>
-                  <p className="body-sm">MBAT workshops and mindfulness-based art therapy training</p>
-                </div>
-              </div>
-              <div className="flex gap-4">
-                <div className="flex flex-col items-center">
-                  <div className="w-4 h-4 rounded-full bg-tsst-primary" />
-                  <div className="w-0.5 flex-1 bg-tsst-border mt-2" />
-                </div>
-                <div className="pb-6">
-                  <span className="badge mb-2">September 2025</span>
-                  <h4 className="font-semibold text-tsst-text mb-1">2nd LTTA in Spain (Sonríe a Europa)</h4>
-                  <p className="body-sm">ACT workshops with support from Giralda Psychotherapy Center</p>
-                </div>
-              </div>
-              <div className="flex gap-4">
-                <div className="flex flex-col items-center">
-                  <div className="w-4 h-4 rounded-full bg-tsst-accent" />
-                </div>
-                <div>
-                  <span className="badge-accent mb-2">September 2026</span>
-                  <h4 className="font-semibold text-tsst-text mb-1">Final Report & Project Completion</h4>
-                  <p className="body-sm">Evaluation results and long-term dissemination planning</p>
-                </div>
-              </div>
+              {MOBILITIES.map((m, index) => (
+                <Link
+                  key={m.slug}
+                  href={`/activities/mobilities/${m.slug}`}
+                  className="flex gap-4 group focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-tsst-primary-dark rounded-lg -m-2 p-2"
+                >
+                  <div className="flex flex-col items-center">
+                    <div
+                      className={cn(
+                        'w-4 h-4 rounded-full flex-shrink-0',
+                        m.variant === 'primary-dark' && 'bg-tsst-primary-dark',
+                        m.variant === 'primary' && 'bg-tsst-primary',
+                        m.variant === 'accent' && 'bg-tsst-accent'
+                      )}
+                    />
+                    {index < MOBILITIES.length - 1 && (
+                      <div className="w-0.5 flex-1 bg-tsst-border mt-2 min-h-[24px]" />
+                    )}
+                  </div>
+                  <div className={cn('pb-6', index === MOBILITIES.length - 1 && 'pb-0')}>
+                    <span className={cn('badge mb-2', m.variant === 'accent' && 'badge-accent')}>{m.dateLabel}</span>
+                    <h4 className="font-semibold text-tsst-text mb-1 group-hover:text-tsst-primary-dark transition-colors">{m.title}</h4>
+                    <p className="body-sm">{m.shortDescription}</p>
+                    <span className="inline-block mt-2 text-xs text-tsst-primary-dark font-medium">View details & media →</span>
+                  </div>
+                </Link>
+              ))}
             </div>
           </div>
         </div>
