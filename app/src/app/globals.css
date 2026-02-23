@@ -1,0 +1,173 @@
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 0 0% 100%;
+    --foreground: 280 30% 18%;
+    --card: 0 0% 100%;
+    --card-foreground: 280 30% 18%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 280 30% 18%;
+    --primary: 285 45% 57%;
+    --primary-foreground: 0 0% 100%;
+    --secondary: 300 45% 85%;
+    --secondary-foreground: 280 30% 18%;
+    --muted: 300 20% 96%;
+    --muted-foreground: 280 20% 40%;
+    --accent: 310 50% 90%;
+    --accent-foreground: 280 30% 18%;
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 0 0% 98%;
+    --border: 300 30% 94%;
+    --input: 300 30% 94%;
+    --ring: 285 45% 57%;
+    --radius: 0.625rem;
+
+    /* TSST Colors - Updated Palette */
+    --tsst-primary-dark: #AA60C8;
+    --tsst-primary: #D69ADE;
+    --tsst-accent: #EABDE6;
+    --tsst-highlight: #FFDFEF;
+    --tsst-background: #FFFFFF;
+    --tsst-text: #2D1B3D;
+    --tsst-text-muted: #6B4E7C;
+    --tsst-border: #F0E0F0;
+    --tsst-card: #FDF5FA;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  html {
+    scroll-behavior: smooth;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  body {
+    @apply bg-white text-tsst-text font-sans;
+    font-feature-settings: 'kern' 1, 'liga' 1;
+  }
+
+  :focus-visible {
+    @apply outline-2 outline-offset-2 outline-tsst-primary-dark;
+  }
+}
+
+@layer components {
+  .btn-primary {
+    @apply inline-flex items-center justify-center gap-2 px-6 py-3 bg-tsst-primary-dark text-white font-medium rounded-xl transition-all duration-200 hover:bg-opacity-90 hover:shadow-soft-lg focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-tsst-primary-dark min-h-[44px] min-w-[44px];
+  }
+
+  .btn-secondary {
+    @apply inline-flex items-center justify-center gap-2 px-6 py-3 bg-tsst-accent text-tsst-text font-medium rounded-xl transition-all duration-200 hover:bg-tsst-highlight focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-tsst-primary-dark min-h-[44px] min-w-[44px];
+  }
+
+  .btn-outline {
+    @apply inline-flex items-center justify-center gap-2 px-6 py-3 border-2 border-tsst-primary-dark text-tsst-primary-dark font-medium rounded-xl transition-all duration-200 hover:bg-tsst-primary-dark hover:text-white focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-tsst-primary-dark min-h-[44px] min-w-[44px];
+  }
+
+  .card {
+    @apply bg-white rounded-2xl border border-tsst-border p-6 shadow-soft transition-all duration-300 hover:shadow-soft-lg;
+  }
+
+  .card-highlight {
+    @apply bg-tsst-highlight/50 rounded-2xl border border-tsst-accent/50 p-6;
+  }
+
+  .section {
+    @apply py-16 md:py-24 lg:py-28;
+  }
+
+  .section-container {
+    @apply max-w-7xl mx-auto px-4 sm:px-6 lg:px-8;
+  }
+
+  .heading-xl {
+    @apply text-4xl md:text-5xl lg:text-6xl font-display font-bold text-tsst-text tracking-tight;
+  }
+
+  .heading-lg {
+    @apply text-3xl md:text-4xl font-display font-bold text-tsst-text tracking-tight;
+  }
+
+  .heading-md {
+    @apply text-2xl md:text-3xl font-display font-semibold text-tsst-text;
+  }
+
+  .heading-sm {
+    @apply text-xl md:text-2xl font-display font-semibold text-tsst-text;
+  }
+
+  .body-lg {
+    @apply text-lg text-tsst-text-muted leading-relaxed;
+  }
+
+  .body-md {
+    @apply text-base text-tsst-text-muted leading-relaxed;
+  }
+
+  .body-sm {
+    @apply text-sm text-tsst-text-muted leading-relaxed;
+  }
+
+  .gradient-hero {
+    background: linear-gradient(135deg, var(--tsst-background) 0%, #FDF5FA 50%, var(--tsst-highlight) 100%);
+  }
+
+  .gradient-subtle {
+    background: linear-gradient(180deg, var(--tsst-background) 0%, #FDF5FA 100%);
+  }
+
+  .badge {
+    @apply inline-flex items-center px-3 py-1 rounded-full text-sm font-medium bg-tsst-primary/20 text-tsst-primary-dark;
+  }
+
+  .badge-accent {
+    @apply inline-flex items-center px-3 py-1 rounded-full text-sm font-medium bg-tsst-accent/60 text-tsst-text;
+  }
+
+  .text-gradient {
+    @apply bg-clip-text text-transparent bg-gradient-to-r from-tsst-primary-dark to-tsst-primary;
+  }
+
+  .skip-link {
+    @apply absolute -top-10 left-0 bg-tsst-primary-dark text-white px-4 py-2 z-50 transition-transform;
+  }
+
+  .skip-link:focus {
+    @apply top-0;
+  }
+}
+
+@layer utilities {
+  .animation-delay-100 {
+    animation-delay: 100ms;
+  }
+  .animation-delay-200 {
+    animation-delay: 200ms;
+  }
+  .animation-delay-300 {
+    animation-delay: 300ms;
+  }
+  .animation-delay-400 {
+    animation-delay: 400ms;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}

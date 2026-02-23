@@ -1,9 +1,27 @@
-import { useState, useEffect } from 'react';
-import { 
-  Heart, Menu, X, ArrowRight, Sparkles, Target, Brain, Globe, Users, 
-  CheckCircle2, MapPin, Calendar, Mail, ExternalLink, 
-  Instagram, Facebook, Send, Shield, BarChart3, TrendingUp,
-  ClipboardCheck, Megaphone
+'use client';
+
+import { useState } from 'react';
+import Link from 'next/link';
+import {
+  Heart,
+  ArrowRight,
+  Sparkles,
+  Target,
+  Brain,
+  Globe,
+  Users,
+  CheckCircle2,
+  MapPin,
+  Calendar,
+  Mail,
+  Instagram,
+  Facebook,
+  Send,
+  Shield,
+  BarChart3,
+  TrendingUp,
+  ClipboardCheck,
+  Megaphone,
 } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
@@ -12,214 +30,9 @@ import { Textarea } from '@/components/ui/textarea';
 import { Label } from '@/components/ui/label';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
 import { Checkbox } from '@/components/ui/checkbox';
-import { cn } from '@/lib/utils';
-
-// Navigation Component
-function Header({ currentPage, setPage }: { currentPage: string; setPage: (page: string) => void }) {
-  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
-  const [scrolled, setScrolled] = useState(false);
-
-  useEffect(() => {
-    const handleScroll = () => setScrolled(window.scrollY > 20);
-    window.addEventListener('scroll', handleScroll, { passive: true });
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
-
-  const navigation = [
-    { name: 'Home', id: 'home' },
-    { name: 'Objectives', id: 'objectives' },
-    { name: 'Activities', id: 'activities' },
-    { name: 'Partners', id: 'partners' },
-    { name: 'Results', id: 'results' },
-    { name: 'Dissemination', id: 'dissemination' },
-    { name: 'Contact', id: 'contact' },
-  ];
-
-  const handleNavClick = (id: string) => {
-    setPage(id);
-    setMobileMenuOpen(false);
-    window.scrollTo({ top: 0, behavior: 'smooth' });
-  };
-
-  return (
-    <header className={cn(
-      'fixed top-0 left-0 right-0 z-40 transition-all duration-300',
-      scrolled ? 'bg-white/95 backdrop-blur-md shadow-soft' : 'bg-transparent'
-    )}>
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex items-center justify-between h-16 md:h-20">
-          <button 
-            onClick={() => handleNavClick('home')}
-            className="flex items-center gap-2 group focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-tsst-primary-dark rounded-lg"
-          >
-            <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-tsst-primary-dark to-tsst-primary flex items-center justify-center transition-transform duration-300 group-hover:scale-105">
-              <Heart className="w-5 h-5 text-white" />
-            </div>
-            <div className="hidden sm:block">
-              <span className="text-lg font-bold text-tsst-text leading-tight">TSST</span>
-              <span className="block text-xs text-tsst-text-muted -mt-0.5">Tackling Self Stigma</span>
-            </div>
-          </button>
-
-          <nav className="hidden lg:flex items-center gap-1">
-            {navigation.map((item) => (
-              <button
-                key={item.name}
-                onClick={() => handleNavClick(item.id)}
-                className={cn(
-                  'px-4 py-2 rounded-lg text-sm font-medium transition-all duration-200',
-                  'focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-tsst-primary-dark',
-                  'min-h-[44px] flex items-center',
-                  currentPage === item.id
-                    ? 'text-tsst-primary-dark bg-tsst-primary/10'
-                    : 'text-tsst-text-muted hover:text-tsst-text hover:bg-tsst-card'
-                )}
-              >
-                {item.name}
-              </button>
-            ))}
-          </nav>
-
-          <div className="hidden lg:block">
-            <Button onClick={() => handleNavClick('contact')} className="btn-primary">
-              Get Involved
-            </Button>
-          </div>
-
-          <button
-            className="lg:hidden p-2 rounded-lg text-tsst-text-muted hover:text-tsst-text hover:bg-tsst-card transition-colors min-h-[44px] min-w-[44px] flex items-center justify-center"
-            onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-            aria-label={mobileMenuOpen ? 'Close menu' : 'Open menu'}
-          >
-            {mobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
-          </button>
-        </div>
-      </div>
-
-      <div className={cn(
-        'lg:hidden absolute top-full left-0 right-0 bg-white border-b border-tsst-border shadow-lg transition-all duration-300',
-        mobileMenuOpen ? 'opacity-100 translate-y-0' : 'opacity-0 -translate-y-4 pointer-events-none'
-      )}>
-        <nav className="max-w-7xl mx-auto px-4 sm:px-6 py-4 space-y-1">
-          {navigation.map((item) => (
-            <button
-              key={item.name}
-              onClick={() => handleNavClick(item.id)}
-              className={cn(
-                'block w-full text-left px-4 py-3 rounded-lg text-base font-medium transition-all duration-200',
-                currentPage === item.id
-                  ? 'text-tsst-primary-dark bg-tsst-primary/10'
-                  : 'text-tsst-text-muted hover:text-tsst-text hover:bg-tsst-card'
-              )}
-            >
-              {item.name}
-            </button>
-          ))}
-          <div className="pt-4 mt-4 border-t border-tsst-border">
-            <Button onClick={() => handleNavClick('contact')} className="btn-primary w-full justify-center">
-              Get Involved
-            </Button>
-          </div>
-        </nav>
-      </div>
-    </header>
-  );
-}
-
-// Footer Component
-function Footer({ setPage }: { setPage: (page: string) => void }) {
-  const handleNavClick = (id: string) => {
-    setPage(id);
-    window.scrollTo({ top: 0, behavior: 'smooth' });
-  };
-
-  return (
-    <footer className="bg-tsst-text text-white">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 md:py-16">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10 lg:gap-8">
-          <div className="lg:col-span-1">
-            <button 
-              onClick={() => handleNavClick('home')}
-              className="flex items-center gap-3 mb-6 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-tsst-accent rounded-lg"
-            >
-              <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-tsst-primary to-tsst-primary-dark flex items-center justify-center">
-                <Heart className="w-6 h-6 text-white" />
-              </div>
-              <div>
-                <span className="text-xl font-bold leading-tight">TSST</span>
-                <span className="block text-xs text-white/70 -mt-0.5">Tackling Self Stigma Together</span>
-              </div>
-            </button>
-            <p className="text-white/70 text-sm leading-relaxed mb-6">
-              An Erasmus+ youth project promoting mental health and self-stigma awareness among youth workers across Europe.
-            </p>
-          </div>
-
-          <div>
-            <h3 className="text-sm font-semibold uppercase tracking-wider text-white/50 mb-4">Project</h3>
-            <ul className="space-y-3">
-              {['objectives', 'activities', 'partners', 'results'].map((item) => (
-                <li key={item}>
-                  <button
-                    onClick={() => handleNavClick(item)}
-                    className="text-white/70 hover:text-white transition-colors text-sm capitalize"
-                  >
-                    {item}
-                  </button>
-                </li>
-              ))}
-            </ul>
-          </div>
-
-          <div>
-            <h3 className="text-sm font-semibold uppercase tracking-wider text-white/50 mb-4">Resources</h3>
-            <ul className="space-y-3">
-              <li><button onClick={() => handleNavClick('dissemination')} className="text-white/70 hover:text-white transition-colors text-sm">Dissemination</button></li>
-              <li><button onClick={() => handleNavClick('contact')} className="text-white/70 hover:text-white transition-colors text-sm">Contact Us</button></li>
-            </ul>
-          </div>
-
-          <div>
-            <h3 className="text-sm font-semibold uppercase tracking-wider text-white/50 mb-4">Contact</h3>
-            <ul className="space-y-4">
-              <li className="flex items-start gap-3">
-                <Mail className="w-5 h-5 text-tsst-primary mt-0.5 flex-shrink-0" />
-                <a href="mailto:info@tsst.eu" className="text-white/70 hover:text-white transition-colors text-sm">info@tsst.eu</a>
-              </li>
-              <li className="flex items-start gap-3">
-                <MapPin className="w-5 h-5 text-tsst-primary mt-0.5 flex-shrink-0" />
-                <span className="text-white/70 text-sm">Coordinated by GASZO<br />Poland, EU</span>
-              </li>
-            </ul>
-          </div>
-        </div>
-      </div>
-
-      <div className="border-t border-white/10">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
-          <div className="flex flex-col md:flex-row items-center justify-between gap-4">
-            <p className="text-white/50 text-sm text-center md:text-left">
-              {new Date().getFullYear()} TSST - Tackling Self Stigma Together. All rights reserved.
-            </p>
-            <div className="flex items-center gap-6">
-              <button onClick={() => handleNavClick('privacy')} className="text-white/50 hover:text-white transition-colors text-sm">Privacy Policy</button>
-              <span className="text-white/30">|</span>
-              <a href="https://erasmus-plus.ec.europa.eu/" target="_blank" rel="noopener noreferrer" className="text-white/50 hover:text-white transition-colors text-sm inline-flex items-center gap-1">
-                Erasmus+ <ExternalLink className="w-3 h-3" />
-              </a>
-            </div>
-          </div>
-          <p className="text-white/40 text-xs text-center mt-4">
-            Funded by the European Union. Views and opinions expressed are however those of the author(s) only and do not necessarily reflect those of the European Union or EACEA.
-          </p>
-        </div>
-      </div>
-    </footer>
-  );
-}
 
 // Home Page
-function HomePage({ setPage }: { setPage: (page: string) => void }) {
+export function HomePage() {
   const features = [
     { icon: Heart, title: 'Self-Stigma Awareness', description: 'Increase understanding and recognition of self-stigma among youth workers, helping them identify and address internalized negative beliefs.' },
     { icon: Brain, title: 'MBTW Therapies', description: 'Mindfulness-Based Therapies including MBAT and ACT to provide youth workers with practical tools for managing stress.' },
@@ -250,11 +63,11 @@ function HomePage({ setPage }: { setPage: (page: string) => void }) {
               </p>
               
               <div className="flex flex-col sm:flex-row gap-4">
-                <Button onClick={() => setPage('objectives')} className="btn-primary">
-                  Explore Our Mission <ArrowRight className="w-5 h-5" />
+                <Button asChild className="btn-primary">
+                  <Link href="/objectives">Explore Our Mission <ArrowRight className="w-5 h-5" /></Link>
                 </Button>
-                <Button onClick={() => setPage('partners')} variant="outline" className="btn-outline">
-                  Meet Our Partners
+                <Button asChild variant="outline" className="btn-outline">
+                  <Link href="/partners">Meet Our Partners</Link>
                 </Button>
               </div>
               
@@ -450,11 +263,11 @@ function HomePage({ setPage }: { setPage: (page: string) => void }) {
               Whether you are a youth worker, organization, or supporter, there are many ways to get involved with TSST.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Button onClick={() => setPage('contact')} className="btn-secondary">
-                Get in Touch <ArrowRight className="w-5 h-5" />
+              <Button asChild className="btn-secondary">
+                <Link href="/contact">Get in Touch <ArrowRight className="w-5 h-5" /></Link>
               </Button>
-              <Button onClick={() => setPage('activities')} variant="outline" className="inline-flex items-center justify-center gap-2 px-6 py-3 border-2 border-white/30 text-white font-medium rounded-xl transition-all duration-200 hover:bg-white/10">
-                Explore Activities
+              <Button asChild variant="outline" className="inline-flex items-center justify-center gap-2 px-6 py-3 border-2 border-white/30 text-white font-medium rounded-xl transition-all duration-200 hover:bg-white/10">
+                <Link href="/activities">Explore Activities</Link>
               </Button>
             </div>
           </div>
@@ -465,7 +278,7 @@ function HomePage({ setPage }: { setPage: (page: string) => void }) {
 }
 
 // Objectives Page
-function ObjectivesPage({ setPage }: { setPage: (page: string) => void }) {
+export function ObjectivesPage() {
   return (
     <>
       <section className="relative pt-32 pb-16 md:pt-40 md:pb-24 gradient-hero">
@@ -683,8 +496,8 @@ function ObjectivesPage({ setPage }: { setPage: (page: string) => void }) {
             <p className="text-lg text-white/80 mb-8">
               All three objectives address the priority of increasing quality, innovation and recognition of youth work, as well as physical and mental health and wellbeing.
             </p>
-            <Button onClick={() => setPage('activities')} className="btn-secondary">
-              Explore Our Activities <ArrowRight className="w-5 h-5" />
+            <Button asChild className="btn-secondary">
+              <Link href="/activities">Explore Our Activities <ArrowRight className="w-5 h-5" /></Link>
             </Button>
           </div>
         </div>
@@ -694,7 +507,7 @@ function ObjectivesPage({ setPage }: { setPage: (page: string) => void }) {
 }
 
 // Activities Page
-function ActivitiesPage() {
+export function ActivitiesPage() {
   const workPackages = [
     { 
       id: 'WP1', 
@@ -942,7 +755,7 @@ function ActivitiesPage() {
 }
 
 // Partners Page
-function PartnersPage({ setPage }: { setPage: (page: string) => void }) {
+export function PartnersPage() {
   const partners = [
     { 
       id: 'gaszo', 
@@ -1174,8 +987,8 @@ function PartnersPage({ setPage }: { setPage: (page: string) => void }) {
           <div className="max-w-3xl mx-auto text-center">
             <h2 className="text-3xl md:text-4xl font-bold mb-6">Interested in Collaboration?</h2>
             <p className="text-lg text-white/80 mb-8">We are always open to new partnerships and opportunities to expand our impact.</p>
-            <Button onClick={() => setPage('contact')} className="btn-secondary">
-              Contact Us <ArrowRight className="w-5 h-5" />
+            <Button asChild className="btn-secondary">
+              <Link href="/contact">Contact Us <ArrowRight className="w-5 h-5" /></Link>
             </Button>
           </div>
         </div>
@@ -1185,7 +998,7 @@ function PartnersPage({ setPage }: { setPage: (page: string) => void }) {
 }
 
 // Results Page
-function ResultsPage() {
+export function ResultsPage() {
   return (
     <>
       <section className="relative pt-32 pb-16 md:pt-40 md:pb-24 gradient-hero">
@@ -1425,7 +1238,7 @@ function ResultsPage() {
 }
 
 // Dissemination Page
-function DisseminationPage() {
+export function DisseminationPage() {
   return (
     <>
       <section className="relative pt-32 pb-16 md:pt-40 md:pb-24 gradient-hero">
@@ -1650,7 +1463,7 @@ function DisseminationPage() {
 }
 
 // Contact Page
-function ContactPage() {
+export function ContactPage() {
   const [submitted, setSubmitted] = useState(false);
 
   const handleSubmit = (e: React.FormEvent) => {
@@ -1789,7 +1602,7 @@ function ContactPage() {
 }
 
 // Privacy Page
-function PrivacyPage() {
+export function PrivacyPage() {
   return (
     <>
       <section className="relative pt-32 pb-16 md:pt-40 md:pb-24 gradient-hero">
@@ -1852,38 +1665,3 @@ function PrivacyPage() {
   );
 }
 
-// Main App Component
-function App() {
-  const [currentPage, setPage] = useState('home');
-
-  useEffect(() => {
-    window.scrollTo({ top: 0, behavior: 'smooth' });
-  }, [currentPage]);
-
-  const renderPage = () => {
-    switch (currentPage) {
-      case 'home': return <HomePage setPage={setPage} />;
-      case 'objectives': return <ObjectivesPage setPage={setPage} />;
-      case 'activities': return <ActivitiesPage />;
-      case 'partners': return <PartnersPage setPage={setPage} />;
-      case 'results': return <ResultsPage />;
-      case 'dissemination': return <DisseminationPage />;
-      case 'contact': return <ContactPage />;
-      case 'privacy': return <PrivacyPage />;
-      default: return <HomePage setPage={setPage} />;
-    }
-  };
-
-  return (
-    <div className="min-h-screen flex flex-col">
-      <a href="#main-content" className="skip-link">Skip to main content</a>
-      <Header currentPage={currentPage} setPage={setPage} />
-      <main id="main-content" className="flex-1">
-        {renderPage()}
-      </main>
-      <Footer setPage={setPage} />
-    </div>
-  );
-}
-
-export default App;
