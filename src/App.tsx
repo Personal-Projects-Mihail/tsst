@@ -206,10 +206,10 @@ export function HomePage() {
               </CardContent>
             </Card>
             
-            <div className="hidden lg:block">
-              <img 
-                src="/images/target-groups.svg" 
-                alt="Target groups illustration showing youth workers and young people" 
+            <div className="hidden lg:block self-center">
+              <img
+                src="/images/target-groups.svg"
+                alt="Target groups illustration showing youth workers and young people"
                 className="w-full"
               />
             </div>
@@ -268,7 +268,7 @@ export function HomePage() {
               <Button asChild className="btn-secondary">
                 <Link href="/contact">Get in Touch <ArrowRight className="w-5 h-5" /></Link>
               </Button>
-              <Button asChild variant="outline" className="inline-flex items-center justify-center gap-2 px-6 py-3 border-2 border-white/30 text-white font-medium rounded-xl transition-all duration-200 hover:bg-white/10">
+              <Button asChild variant="outline" className="inline-flex items-center justify-center gap-2 px-6 py-3 border-2 border-white/30 bg-transparent text-white font-medium rounded-xl transition-all duration-200 hover:bg-white/10">
                 <Link href="/activities">Explore Activities</Link>
               </Button>
             </div>
