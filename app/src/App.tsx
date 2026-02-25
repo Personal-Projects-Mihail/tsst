@@ -510,81 +510,6 @@ export function ObjectivesPage() {
 
 // Activities Page
 export function ActivitiesPage() {
-  const workPackages = [
-    { 
-      id: 'WP1', 
-      title: 'Project Management & Coordination', 
-      icon: Target, 
-      lead: 'GASZO (Poland)', 
-      description: 'GASZO is in charge of planning online meetings according to the Gantt Chart. Daily work is based on social inclusion and active participation.',
-      activities: [
-        'Online kick-off meeting (October 2024)',
-        '3 online follow-up meetings (March 2025, December 2025, March 2026)',
-        'Interim report meeting (September 2025)',
-        'Final report meeting (September 2026)',
-        'Transnational Project Meeting in Poland (January 2025)',
-        'LTTA arrangements coordination'
-      ]
-    },
-    { 
-      id: 'WP2', 
-      title: 'Workshops & Training (MBTW)', 
-      icon: Users, 
-      lead: 'All Partners - Xanadu Art & Sonríe a Europa', 
-      description: 'Youth workers will be involved in workshops, dramas, and group works themed by two kinds of MBTW therapy methods.',
-      activities: [
-        '1st LTTA in North Macedonia (June 2025) - MBAT workshops by Xanadu Art',
-        '2nd LTTA in Spain (September 2025) - ACT workshops by Sonríe a Europa',
-        'Kick-off meeting in Curaçao (January 2025) hosted by ASEAC',
-        'Drama and group work activities',
-        'Mindfulness-Based Art Therapy (MBAT) sessions',
-        'Acceptance and Commitment Therapy (ACT) sessions'
-      ]
-    },
-    { 
-      id: 'WP3', 
-      title: 'Digital & AI Development', 
-      icon: Sparkles, 
-      lead: 'BYC (Turkey) - Ilhan Ozdemir', 
-      description: 'BYC is responsible for creating the AI application digital output. Led by Ilhan Ozdemir, an android developer, AI expert, and software development specialist.',
-      activities: [
-        'AI app development workshops',
-        'Digital tool design with MBTW therapy methods',
-        'User testing with participant youth workers',
-        'Project management via ASANA software',
-        'Assessment by IT experts from all partner countries'
-      ]
-    },
-    { 
-      id: 'WP4', 
-      title: 'Evaluation & Monitoring', 
-      icon: BarChart3, 
-      lead: 'All Partners with Giralda Center Support', 
-      description: 'Rigorous evaluation methods to measure impact on youth worker mental health and ensure objectives are achieved.',
-      activities: [
-        'SSDS pre/post tests (Self-Stigma of Depression Scale)',
-        'Kahoot evaluations at the end of each LTT',
-        'Final Self & Peer Evaluation Google Forms',
-        'Semi-structured interviews at project end',
-        '3 monitoring virtual meetings during project length'
-      ]
-    },
-    { 
-      id: 'WP5', 
-      title: 'Dissemination & Exploitation', 
-      icon: Megaphone, 
-      lead: 'All Partners - BYC Social Media Team', 
-      description: 'Sharing results within partnership, local communities, and wider public through multiple channels.',
-      activities: [
-        'Virtual TPM presentations to partner organizations',
-        'Local events: Erasmus Days (October), World Health Month (April), Mental Health Awareness Week (May)',
-        'Instagram and Facebook social media accounts',
-        'AI application, LTTA reels, videos, and photos',
-        'EPALE, SALTO Youth, and national websites distribution'
-      ]
-    },
-  ];
-
   return (
     <>
       <section className="relative pt-32 pb-16 md:pt-40 md:pb-24 gradient-hero">
@@ -592,58 +517,12 @@ export function ActivitiesPage() {
           <div className="max-w-3xl">
             <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-tsst-primary/10 text-tsst-primary-dark text-sm font-medium mb-6">
               <Target className="w-4 h-4" />
-              <span>Work Packages</span>
+              <span>Project Timeline & Mobilities</span>
             </div>
-            <h1 className="heading-xl text-gradient mb-6">Activities & Work Packages</h1>
+            <h1 className="heading-xl text-gradient mb-6">Project Timeline & Mobilities</h1>
             <p className="text-xl text-tsst-text-muted leading-relaxed">
-              Our project is structured into five comprehensive work packages, each designed to deliver specific outcomes and contribute to our mission.
+              Key milestones and mobilities throughout the 24-month project. Click a mobility for more details and media.
             </p>
-          </div>
-        </div>
-      </section>
-
-      <section className="section bg-white">
-        <div className="section-container">
-          <div className="text-center mb-16">
-            <h2 className="heading-lg mb-4">Project Work Packages</h2>
-            <p className="body-lg max-w-2xl mx-auto">Five interconnected work packages guide our project from coordination to dissemination.</p>
-          </div>
-          
-          <div className="space-y-8">
-            {workPackages.map((wp) => (
-              <Card key={wp.id} className="card">
-                <CardContent className="p-8">
-                  <div className="flex flex-col lg:flex-row lg:items-start gap-6">
-                    <div className="flex items-center gap-4 lg:w-72 flex-shrink-0">
-                      <div className="w-14 h-14 rounded-xl bg-gradient-to-br from-tsst-primary/20 to-tsst-primary-dark/20 flex items-center justify-center">
-                        <wp.icon className="w-7 h-7 text-tsst-primary-dark" />
-                      </div>
-                      <div>
-                        <span className="text-sm font-bold text-tsst-primary-dark">{wp.id}</span>
-                        <h3 className="font-semibold text-tsst-text leading-tight">{wp.title}</h3>
-                      </div>
-                    </div>
-                    <div className="flex-1">
-                      <p className="body-md mb-4">{wp.description}</p>
-                      <div className="flex items-center gap-2 mb-4">
-                        <span className="text-sm text-tsst-text-muted">Lead:</span>
-                        <span className="badge">{wp.lead}</span>
-                      </div>
-                      <div className="bg-tsst-card rounded-xl p-5">
-                        <ul className="grid grid-cols-1 md:grid-cols-2 gap-3">
-                          {wp.activities.map((activity) => (
-                            <li key={activity} className="flex items-start gap-2">
-                              <CheckCircle2 className="w-5 h-5 text-tsst-primary flex-shrink-0 mt-0.5" />
-                              <span className="body-sm">{activity}</span>
-                            </li>
-                          ))}
-                        </ul>
-                      </div>
-                    </div>
-                  </div>
-                </CardContent>
-              </Card>
-            ))}
           </div>
         </div>
       </section>
@@ -651,10 +530,6 @@ export function ActivitiesPage() {
       {/* Timeline / Mobilities roadmap */}
       <section className="section gradient-subtle">
         <div className="section-container">
-          <div className="text-center mb-12">
-            <h2 className="heading-lg mb-4">Project Timeline & Mobilities</h2>
-            <p className="body-lg max-w-2xl mx-auto">Key milestones and mobilities throughout the 24-month project. Click a mobility for more details and media.</p>
-          </div>
           <div className="max-w-4xl mx-auto">
             <div className="space-y-6">
               {MOBILITIES.map((m, index) => (

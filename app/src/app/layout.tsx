@@ -42,7 +42,7 @@ export const metadata: Metadata = {
     images: ['/images/og-image.jpg'],
   },
   icons: {
-    icon: '/icons/icon-512x512.png',
+    icon: '/favicon.ico',
     apple: '/icons/icon-512x512.png',
   },
   manifest: '/manifest.json',

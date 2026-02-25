@@ -2,8 +2,9 @@
 
 import { useState, useEffect } from 'react';
 import Link from 'next/link';
+import Image from 'next/image';
 import { usePathname } from 'next/navigation';
-import { Heart, Menu, X } from 'lucide-react';
+import { Menu, X } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { cn } from '@/lib/utils';
 
@@ -46,13 +47,16 @@ export function Header() {
             href="/"
             className="flex items-center gap-2 group focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-tsst-primary-dark rounded-lg"
           >
-            <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-tsst-primary-dark to-tsst-primary flex items-center justify-center transition-transform duration-300 group-hover:scale-105">
-              <Heart className="w-5 h-5 text-white" />
+            <div className="w-10 h-10 rounded-xl flex items-center justify-center transition-transform duration-300 group-hover:scale-105 overflow-hidden bg-transparent">
+              <Image
+                src="/logo/logo-no-text-no-bg.png"
+                alt="TSST"
+                width={40}
+                height={40}
+                className="object-contain"
+              />
             </div>
-            <div className="hidden sm:block">
-              <span className="text-lg font-bold text-tsst-text leading-tight">TSST</span>
-              <span className="block text-xs text-tsst-text-muted -mt-0.5">Tackling Self Stigma</span>
-            </div>
+            <span className="hidden sm:block text-xs text-tsst-text-muted">Tackling Self Stigma Together</span>
           </Link>
 
           <nav className="hidden lg:flex items-center gap-1">

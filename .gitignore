@@ -30,3 +30,6 @@ Thumbs.db
 
 # Vite
 *.local
+
+# Large media - host externally (YouTube, Vercel Blob) to stay under GitHub's 100MB limit
+app/public/mobilities/*/videos/*.mp4
